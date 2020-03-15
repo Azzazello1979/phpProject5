@@ -31,5 +31,8 @@
 
     // print_r($chargeResponse);
 
+    // redirect to success.php
+    header('Location: success.php?&customername='.$customerResponse['name'].'&transactionid='.$chargeResponse['id'].'&product='.$chargeResponse['description']);
+
 
 ?>
