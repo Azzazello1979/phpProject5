@@ -11,21 +11,21 @@
     $stripeToken = $post['stripeToken'];
 
     // create customer in Stripe
-    $customer = \Stripe\Customer::create([
+    $customerResponse = \Stripe\Customer::create([
         'email' => $email,
-        'name' => $first_name . $last_name,
+        'name' => $first_name .' '. $last_name,
         'source' => $stripeToken
     ]);
 
     // charge customer
-    $charge = \Stripe\Charge::create([
+    $chargeResponse = \Stripe\Charge::create([
         'amount' => 5000,
         'currency' => 'usd',
         'description' => 'React Course',
-        'customer' => $customer->id
+        'customer' => $customerResponse->id
     ]);
 
-    print_r($charge);
-
+    echo 'response after charging customer: ' . print_r($chargeResponse);
+    header('Location: success.php?transactionid='.$chargeResponse->id.'&product='.$chargeResponse->description.'&customername='.$customerResponse->name);
 
 ?>
