@@ -19,6 +19,17 @@
         "name" => $first_name . ' ' . $last_name
     ));
 
-    var_dump($customerResponse);
+    //var_dump($customerResponse);
+
+    // charge customer
+    $chargeResponse = \Stripe\Charge::create([
+        "amount" => 5000,
+        "currency" => "usd",
+        "description" => "React Course",
+        "customer" => $customerResponse['id']
+    ]);
+
+    // print_r($chargeResponse);
+
 
 ?>
