@@ -2,6 +2,8 @@
 phpProject5
 
 PHP Payment App
----------------
-PHP, Stripe, MySQL
+------------------------
+PHP (OOP),
+Stripe, 
+MySQL (PDO)
 
