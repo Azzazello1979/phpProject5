@@ -1,5 +1,7 @@
 <?php
 
+    require 'config/cdn.php';
+
     if(
         !empty($_GET['customername']) && 
         !empty($_GET['transactionid']) && 
@@ -22,6 +24,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="<?php echo $bootstrap; ?>" >
     <title>Successful Payment</title>
     <style>
         .transactionID{
@@ -30,9 +33,14 @@
     </style>
 </head>
 <body>
-    <h3>Thank You For Your Custom <?php echo htmlspecialchars($customername); ?>!</h3>
-    <p class="transactionID">transaction id: <?php echo htmlspecialchars($transactionid); ?></p>
-    <hr>
-    <p><?php echo htmlspecialchars($product); ?></p>
+    <div class="container mt-4">
+        <h3>Thank You For Your Custom <?php echo htmlspecialchars($customername); ?>!</h3>
+        <p class="transactionID">transaction id: <?php echo htmlspecialchars($transactionid); ?></p>
+        <hr>
+        <p><?php echo htmlspecialchars($product); ?></p>
+        <hr>
+        <p>Check your email for details!</p>
+    </div>
+    
 </body>
 </html>
