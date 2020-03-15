@@ -10,22 +10,15 @@
     $email = $post['email'];
     $stripeToken = $post['stripeToken'];
 
+    //echo $stripeToken;
+
     // create customer in Stripe
-    $customerResponse = \Stripe\Customer::create([
-        'email' => $email,
-        'name' => $first_name .' '. $last_name,
-        'source' => $stripeToken
-    ]);
+    $customerResponse = \Stripe\Customer::create(array(
+        "email" => $email,
+        "source" => $stripeToken,
+        "name" => $first_name . ' ' . $last_name
+    ));
 
-    // charge customer
-    $chargeResponse = \Stripe\Charge::create([
-        'amount' => 5000,
-        'currency' => 'usd',
-        'description' => 'React Course',
-        'customer' => $customerResponse->id
-    ]);
-
-    echo 'response after charging customer: ' . print_r($chargeResponse);
-    header('Location: success.php?transactionid='.$chargeResponse->id.'&product='.$chargeResponse->description.'&customername='.$customerResponse->name);
+    var_dump($customerResponse);
 
 ?>
